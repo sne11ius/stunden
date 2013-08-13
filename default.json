@@ -1,0 +1,11 @@
+{
+    "plugins": [
+        {
+            "direction": "in",
+            "path": "/home/sne11ius/src/StundenTextfilePlugin/target/StundenTextfilePlugin-0.0.1-SNAPSHOT.jar"
+        }, {
+            "direction": "out",
+            "path": "/home/sne11ius/src/StundenSTDOutPlugin/target/StundenSTDOutPlugin-0.0.1-SNAPSHOT.jar"
+        }
+    ]
+}
