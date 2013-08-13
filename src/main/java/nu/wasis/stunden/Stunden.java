@@ -1,9 +1,14 @@
 package nu.wasis.stunden;
 
+import java.io.File;
 import java.io.IOException;
 
+import net.xeoh.plugins.base.PluginManager;
+import net.xeoh.plugins.base.impl.PluginManagerFactory;
 import nu.wasis.stunden.cli.StundenOptions;
+import nu.wasis.stunden.config.PluginConfig;
 import nu.wasis.stunden.config.StundenConfig;
+import nu.wasis.stunden.plugin.InputPlugin;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -24,7 +29,20 @@ public class Stunden {
         }
 
         final StundenConfig config = StundenConfig.readConfig(cmd.getOptionValue(StundenOptions.OPTION_CONFIG_FILE));
-        LOG.debug(config);
+
+        final PluginManager pm = PluginManagerFactory.createPluginManager();
+
+        for (final PluginConfig pluginConfig : config.getPluginConfigs()) {
+            LOG.debug("Loading plugin from " + pluginConfig.getPath() + "...");
+            pm.addPluginsFrom(new File(pluginConfig.getPath()).toURI());
+            LOG.debug("... done");
+        }
+
+        final InputPlugin inputPlugin = pm.getPlugin(InputPlugin.class);
+        if (null == inputPlugin) {
+            throw new RuntimeException("Input plugin is null D:");
+        }
+        inputPlugin.read(null);
     }
 
     private static boolean checkCommands(final CommandLine cmd) {

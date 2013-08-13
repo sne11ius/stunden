@@ -2,10 +2,10 @@
     "pluginConfigs": [
         {
             "direction": "IN",
-            "path": "/home/sne11ius/src/StundenTextfilePlugin/target/StundenTextfilePlugin-0.0.1-SNAPSHOT.jar"
+            "path": "/home/cornelius/src/StundenTextfilePlugin/target/StundenTextfilePlugin-0.0.1-SNAPSHOT.jar"
         }, {
             "direction": "OUT",
-            "path": "/home/sne11ius/src/StundenSTDOutPlugin/target/StundenSTDOutPlugin-0.0.1-SNAPSHOT.jar"
+            "path": "/home/cornelius/src/StundenSTDOutPlugin/target/StundenSTDOutPlugin-0.0.1-SNAPSHOT.jar"
         }
     ]
 }
