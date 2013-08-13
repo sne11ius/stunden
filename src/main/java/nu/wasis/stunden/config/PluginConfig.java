@@ -3,7 +3,6 @@ package nu.wasis.stunden.config;
 public class PluginConfig {
 
     private PluginDirection direction;
-
     private String path;
 
     public PluginDirection getDirection() {

@@ -1,16 +1,14 @@
 package nu.wasis.stunden;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import nu.wasis.stunden.cli.StundenOptions;
+import nu.wasis.stunden.config.StundenConfig;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
 public class Stunden {
@@ -25,26 +23,16 @@ public class Stunden {
             return;
         }
 
-        for (final File file : new File(cmd.getOptionValue(StundenOptions.OPTION_DIRECTORY)).listFiles()) {
-            LOG.info("Parsing file `" + file + "'.");
-            final List<String> lines = FileUtils.readLines(file);
-            for (final String line : lines) {
-                LOG.debug(line);
-            }
-        }
+        final StundenConfig config = StundenConfig.readConfig(cmd.getOptionValue(StundenOptions.OPTION_CONFIG_FILE));
+        LOG.debug(config);
     }
 
     private static boolean checkCommands(final CommandLine cmd) {
-        if (!cmd.hasOption(StundenOptions.OPTION_DIRECTORY)) {
-            LOG.error("Option `" + StundenOptions.OPTION_DIRECTORY + "' is not optional.");
+        if (!cmd.hasOption(StundenOptions.OPTION_CONFIG_FILE)) {
+            LOG.error("Option `" + StundenOptions.OPTION_CONFIG_FILE + "' is not optional.");
             return false;
         }
 
-        final File file = new File(cmd.getOptionValue(StundenOptions.OPTION_DIRECTORY));
-        if (!file.isDirectory()) {
-            LOG.error("Option `" + StundenOptions.OPTION_DIRECTORY + "' is not a directory.");
-            return false;
-        }
         return true;
     }
 }

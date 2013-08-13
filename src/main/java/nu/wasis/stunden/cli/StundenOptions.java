@@ -6,16 +6,14 @@ public class StundenOptions extends Options {
 
     private static final long serialVersionUID = 1L;
 
-    public static final String OPTION_CHECK = "c";
-    public static final String OPTION_DIRECTORY = "d";
+    public static final String OPTION_CONFIG_FILE = "c";
 
     public StundenOptions() {
         addOptions();
     }
 
     private void addOptions() {
-        addOption(OPTION_CHECK, true, "Only check files.");
-        addOption(OPTION_DIRECTORY, true, "Source directory.");
+        addOption(OPTION_CONFIG_FILE, true, "Configuration File.");
     }
 
 }
