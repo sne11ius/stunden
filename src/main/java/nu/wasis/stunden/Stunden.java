@@ -31,18 +31,17 @@ public class Stunden {
         final StundenConfig config = StundenConfig.readConfig(cmd.getOptionValue(StundenOptions.OPTION_CONFIG_FILE));
 
         final PluginManager pm = PluginManagerFactory.createPluginManager();
-
-        for (final PluginConfig pluginConfig : config.getPluginConfigs()) {
-            LOG.debug("Loading plugin from " + pluginConfig.getPath() + "...");
-            pm.addPluginsFrom(new File(pluginConfig.getPath()).toURI());
-            LOG.debug("... done");
-        }
-
+        final PluginConfig pluginConfig = config.getPluginConfigs().get(0);
+        pm.addPluginsFrom(new File(pluginConfig.getPath()).toURI());
         final InputPlugin inputPlugin = pm.getPlugin(InputPlugin.class);
-        if (null == inputPlugin) {
-            throw new RuntimeException("Input plugin is null D:");
-        }
-        inputPlugin.read(null);
+        inputPlugin.read(pluginConfig.getArgs());
+        /*
+         * for (final PluginConfig pluginConfig : config.getPluginConfigs()) { final PluginManager pm =
+         * PluginManagerFactory.createPluginManager(); LOG.debug("Loading plugin from " + pluginConfig.getPath() +
+         * "..."); pm.addPluginsFrom(new File(pluginConfig.getPath()).toURI()); LOG.debug("... done"); } final
+         * InputPlugin inputPlugin = pm.getPlugin(InputPlugin.class); if (null == inputPlugin) { throw new
+         * RuntimeException("Input plugin is null D:"); } inputPlugin.read(null);
+         */
     }
 
     private static boolean checkCommands(final CommandLine cmd) {
