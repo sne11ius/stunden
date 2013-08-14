@@ -6,11 +6,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>stunden</name>
 	<description>stunden verschreiben</description>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <jersey-version>1.8</jersey-version>
-    </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<jersey-version>1.8</jersey-version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>joda-time</groupId>
@@ -56,23 +56,23 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
-        <dependency>
-            <groupId>net.xeon</groupId>
-            <artifactId>jspf.core</artifactId>
-            <version>1.0.3</version>
-        </dependency>
+		<dependency>
+			<groupId>net.xeon</groupId>
+			<artifactId>jspf.core</artifactId>
+			<version>1.0.3</version>
+		</dependency>
 	</dependencies>
 	<build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <inherited>true</inherited>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

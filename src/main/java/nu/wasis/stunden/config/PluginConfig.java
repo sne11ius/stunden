@@ -4,17 +4,8 @@ import java.util.Map;
 
 public class PluginConfig {
 
-    private PluginDirection direction;
     private String path;
     private Map<String, String> args;
-
-    public PluginDirection getDirection() {
-        return direction;
-    }
-
-    public void setDirection(final PluginDirection direction) {
-        this.direction = direction;
-    }
 
     public String getPath() {
         return path;

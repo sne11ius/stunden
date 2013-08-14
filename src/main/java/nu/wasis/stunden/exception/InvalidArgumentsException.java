@@ -5,7 +5,6 @@ public class InvalidArgumentsException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     public InvalidArgumentsException() {
-        // TODO Auto-generated constructor stub
     }
 
     public InvalidArgumentsException(final String message) {

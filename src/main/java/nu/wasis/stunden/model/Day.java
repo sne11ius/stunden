@@ -14,4 +14,12 @@ public class Day {
         this.entries = entries;
     }
 
+    public DateTime getDate() {
+        return date;
+    }
+
+    public List<Entry> getEntries() {
+        return entries;
+    }
+
 }
