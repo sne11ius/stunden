@@ -13,6 +13,7 @@ import nu.wasis.stunden.config.InputPluginBundle;
 import nu.wasis.stunden.config.OutputPluginBundle;
 import nu.wasis.stunden.config.PluginConfig;
 import nu.wasis.stunden.config.StundenConfig;
+import nu.wasis.stunden.exception.InvalidConfigurationException;
 import nu.wasis.stunden.model.WorkPeriod;
 import nu.wasis.stunden.plugin.InputPlugin;
 import nu.wasis.stunden.plugin.OutputPlugin;
@@ -45,7 +46,13 @@ public class Stunden {
             return;
         }
 
-        final WorkPeriod combinedWorkPeriod = readCombinedWorkPeriod(inputPluginBundles);
+        WorkPeriod combinedWorkPeriod = null;
+        try {
+            combinedWorkPeriod = readCombinedWorkPeriod(inputPluginBundles);
+        } catch (final Exception e) {
+            LOG.error("Error while reading input:", e);
+            return;
+        }
 
         System.out.println("");
 
@@ -61,7 +68,9 @@ public class Stunden {
             final OutputPlugin outputPlugin = outputPluginBundle.getOutputPlugin();
             try {
                 final Map<String, String> pluginArgs = outputPluginBundle.getPluginConfig().getArgs();
+                LOG.info("Outputting via `" + outputPlugin.getClass().getName() + "'...");
                 outputPlugin.output(combinedWorkPeriod, pluginArgs);
+                LOG.info("... done.");
             } catch (final Exception e) {
                 LOG.warn("Output plugin `" + outputPlugin.getClass().getName() + "' failed:", e);
             }
@@ -103,16 +112,18 @@ public class Stunden {
     }
 
     private static WorkPeriod readCombinedWorkPeriod(final List<InputPluginBundle> inputPluginBundles) {
-        final WorkPeriod combinedWorkPeriod = new WorkPeriod();
+        WorkPeriod combinedWorkPeriod = null;// new WorkPeriod();
         for (final InputPluginBundle inputPluginBundle : inputPluginBundles) {
             final InputPlugin inputPlugin = inputPluginBundle.getInputPlugin();
-            try {
-                final Map<String, String> pluginArgs = inputPluginBundle.getPluginConfig().getArgs();
-                final WorkPeriod workPeriod = inputPlugin.read(pluginArgs);
+            final Map<String, String> pluginArgs = inputPluginBundle.getPluginConfig().getArgs();
+            LOG.info("Reading via `" + inputPlugin.getClass().getName() + "'...");
+            final WorkPeriod workPeriod = inputPlugin.read(pluginArgs);
+            if (null == combinedWorkPeriod) {
+                combinedWorkPeriod = workPeriod;
+            } else {
                 combinedWorkPeriod.addAll(workPeriod);
-            } catch (final Exception e) {
-                LOG.warn("Input plugin `" + inputPlugin.getClass().getName() + "' failed:", e);
             }
+            LOG.info("... done.");
         }
         return combinedWorkPeriod;
     }

@@ -1,4 +1,4 @@
-package nu.wasis.stunden;
+package nu.wasis.stunden.exception;
 
 public class InvalidConfigurationException extends RuntimeException {
 

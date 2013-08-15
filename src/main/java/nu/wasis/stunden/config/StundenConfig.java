@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import nu.wasis.stunden.util.JsonHelper;
+import nu.wasis.stunden.util.JsonUtils;
 
 public class StundenConfig {
 
@@ -22,7 +22,7 @@ public class StundenConfig {
         // LOG.debug("Config file content:\n" + fileContent);
         // }
 
-        return JsonHelper.GSON.fromJson(new FileReader(new File(filename)), StundenConfig.class);
+        return JsonUtils.GSON.fromJson(new FileReader(new File(filename)), StundenConfig.class);
     }
 
     public List<PluginConfig> getInputConfigs() {

@@ -3,6 +3,9 @@ package nu.wasis.stunden.model;
 import java.util.LinkedList;
 import java.util.List;
 
+import nu.wasis.stunden.exception.NonUniqueDayException;
+import nu.wasis.stunden.util.DateUtils;
+
 import org.joda.time.DateTime;
 
 public class WorkPeriod {
@@ -11,6 +14,11 @@ public class WorkPeriod {
     private DateTime end = null;
 
     private List<Day> days = new LinkedList<>();
+
+    public WorkPeriod(final DateTime begin, final DateTime end) {
+        this.begin = begin;
+        this.end = end;
+    }
 
     public void addAll(final WorkPeriod workPeriod) {
         if (null == begin) {
@@ -25,6 +33,9 @@ public class WorkPeriod {
             }
             if (day.getDate().isAfter(end)) {
                 end = day.getDate();
+            }
+            if (days.contains(day)) {
+                throw new NonUniqueDayException("Entry for date " + day.getDate().toString(DateUtils.DATE_FORMATTER) + " already exists.");
             }
             days.add(day);
         }

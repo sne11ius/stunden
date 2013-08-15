@@ -3,7 +3,7 @@ package nu.wasis.stunden.config;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import nu.wasis.stunden.util.JsonHelper;
+import nu.wasis.stunden.util.JsonUtils;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
@@ -16,7 +16,7 @@ public class StundenConfigTest {
     @Test
     public void testWriteStundenConfig() {
         final StundenConfig config = new StundenConfig();
-        final String json = JsonHelper.GSON.toJson(config);
+        final String json = JsonUtils.GSON.toJson(config);
         LOG.debug(json);
     }
 
@@ -24,6 +24,6 @@ public class StundenConfigTest {
     public void testReadStundenConfig() throws IOException {
         final InputStreamReader streamReader = new InputStreamReader(StundenConfigTest.class.getResourceAsStream("/default.json"));
         final String fileContent = IOUtils.toString(streamReader);
-        JsonHelper.GSON.fromJson(fileContent, StundenConfig.class);
+        JsonUtils.GSON.fromJson(fileContent, StundenConfig.class);
     }
 }
