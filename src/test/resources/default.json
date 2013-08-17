@@ -1,12 +1,15 @@
 {
-    pluginConfigs: [
+    inputConfigs: [
         {
-            direction: "IN",
-            path: "/home/sne11ius/src/StundenTextfilePlugin/target/StundenTextfilePlugin-0.0.1-SNAPSHOT.jar"
-        },
+            path: "/home/cornelius/src/StundenTextfilePlugin/target/StundenTextfilePlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+            args: {
+                indir: "/home/cornelius/src/StundenTextfilePlugin/src/test/resources/examples"
+            }
+        }
+    ],
+    outputConfigs: [
         {
-            direction: "OUT",
-            path: "/home/sne11ius/src/StundenSTDOutPlugin/target/StundenSTDOutPlugin-0.0.1-SNAPSHOT.jar"
+            path: "/home/cornelius/src/StundenSTDOutPlugin/target/StundenSTDOutPlugin-0.0.1-SNAPSHOT.jar"
         }
     ]
 }

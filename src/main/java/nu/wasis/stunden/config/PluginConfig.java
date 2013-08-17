@@ -1,11 +1,17 @@
 package nu.wasis.stunden.config;
 
-import java.util.Map;
-
 public class PluginConfig {
 
     private String path;
-    private Map<String, String> args;
+    private Object configuration;
+
+    public PluginConfig() {
+    }
+
+    public PluginConfig(final String path, final Object configuration) {
+        this.path = path;
+        this.configuration = configuration;
+    }
 
     public String getPath() {
         return path;
@@ -15,12 +21,12 @@ public class PluginConfig {
         this.path = path;
     }
 
-    public Map<String, String> getArgs() {
-        return args;
+    public Object getConfiguration() {
+        return configuration;
     }
 
-    public void setArgs(final Map<String, String> args) {
-        this.args = args;
+    public void setConfiguration(final Object configuration) {
+        this.configuration = configuration;
     }
 
 }

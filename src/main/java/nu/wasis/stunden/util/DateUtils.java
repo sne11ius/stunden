@@ -17,5 +17,4 @@ public class DateUtils {
                                                                                          .toFormatter();
     public static final PeriodFormatter PERIOD_FORMATTER = new PeriodFormatterBuilder().minimumPrintedDigits(2).printZeroAlways().appendHours()
                                                                                        .appendSeparator(":").appendMinutes().toFormatter();
-
 }

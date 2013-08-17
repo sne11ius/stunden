@@ -2,14 +2,16 @@
     inputConfigs: [
         {
             path: "/home/cornelius/src/StundenTextfilePlugin/target/StundenTextfilePlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
-            args: {
-                indir: "/home/cornelius/src/StundenTextfilePlugin/src/test/resources/examples"
+            config: {
+                readFrom: "/home/cornelius/src/StundenTextfilePlugin/src/test/resources/examples"
             }
         }
     ],
     outputConfigs: [
         {
             path: "/home/cornelius/src/StundenSTDOutPlugin/target/StundenSTDOutPlugin-0.0.1-SNAPSHOT.jar"
+        }, {
+            path: "/home/cornelius/src/StundenAutoHotkeyScriptForSAPGUIOutputPlugin/target/StundenAutoHotkeyScriptForSAPGUIOutputPlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar"
         }
     ]
 }

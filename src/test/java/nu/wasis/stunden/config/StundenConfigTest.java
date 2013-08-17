@@ -26,4 +26,5 @@ public class StundenConfigTest {
         final String fileContent = IOUtils.toString(streamReader);
         JsonUtils.GSON.fromJson(fileContent, StundenConfig.class);
     }
+
 }
