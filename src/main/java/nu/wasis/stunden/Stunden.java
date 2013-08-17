@@ -53,6 +53,9 @@ public class Stunden {
             LOG.error("Error while reading input:", e);
             return;
         }
+        if (null == combinedWorkPeriod || combinedWorkPeriod.getDays().isEmpty()) {
+            LOG.warn("No input plugin generated any data. I'm outta here.");
+        }
 
         System.out.println("");
 
@@ -78,7 +81,7 @@ public class Stunden {
     }
 
     private static WorkPeriod readCombinedWorkPeriod(final List<InputPluginBundle> inputPluginBundles) {
-        WorkPeriod combinedWorkPeriod = null;// new WorkPeriod();
+        WorkPeriod combinedWorkPeriod = null;
         for (final InputPluginBundle inputPluginBundle : inputPluginBundles) {
             final InputPlugin inputPlugin = inputPluginBundle.getInputPlugin();
             final Object pluginConfig = inputPluginBundle.getPluginConfig().getConfiguration();

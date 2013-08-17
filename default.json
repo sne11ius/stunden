@@ -9,7 +9,10 @@
     ],
     outputConfigs: [
         {
-            path: "/home/cornelius/src/StundenSTDOutPlugin/target/StundenSTDOutPlugin-0.0.1-SNAPSHOT.jar"
+            path: "/home/cornelius/src/StundenSTDOutPlugin/target/StundenSTDOutPlugin-0.0.1-SNAPSHOT.jar",
+            config: {
+                noWork: ["Essen"]
+            }
         }, {
             path: "/home/cornelius/src/StundenAutoHotkeyScriptForSAPGUIOutputPlugin/target/StundenAutoHotkeyScriptForSAPGUIOutputPlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar"
         }
