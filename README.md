@@ -3,6 +3,14 @@ stunden
 
 Reads work hours via input plugin(s) and puts them out via output plugin(s).
 
+TOC
+===
+ - [Current Plugins](#current-plugins-work-in-progress)
+ - [Planned Plugins](#planned-plugins)
+ - [How to build](#how-to-build)
+ - [Configuration](#configuration)
+ - [Example run](#example-run)
+
 Current Plugins (work in progress)
 ==================================
 
@@ -63,3 +71,55 @@ The file must contain valid JSON (though you may omit the quotes around keys):
 }
 ```
 Also see example @ https://github.com/sne11ius/stunden/blob/master/default.json
+
+Example run
+===========
+
+```
+cornelius@homebox:~/src/stunden$ java -jar target/stunden-0.0.1-SNAPSHOT-jar-with-dependencies.jar -c default.json 
+0    [main] INFO  nu.wasis.stunden.Stunden - Reading via `nu.wasis.stunden.plugins.StundenTextfilePlugin'...
+1    [main] INFO  nu.wasis.stunden.plugins.StundenTextfilePlugin - Parsing `/home/cornelius/src/StundenTextfilePlugin/src/test/resources/examples' ...
+552  [main] INFO  nu.wasis.stunden.plugins.StundenTextfilePlugin - ... done.
+552  [main] INFO  nu.wasis.stunden.Stunden - ... done.
+
+654  [main] INFO  nu.wasis.stunden.Stunden - Outputting via `nu.wasis.stunden.plugins.StundenSTDOutPlugin'...
+Start of period	: 2013-01-01
+End of period	: 2013-01-02
+============================
+
+2013-01-01
+==========
+10:00 - 10:45: Intern
+10:45 - 12:00: Project 1
+12:00 - 13:00: Project 2
+13:00 - 14:15: Project 1
+14:15 - 15:00: Project 3
+15:00 - 20:00: Project 2
+Summary:
+	Intern: 00:45
+	Project 2: 06:00
+	Project 1: 02:30
+	Project 3: 00:45
+	Total: 10:00
+
+2013-01-02
+==========
+10:00 - 10:30: Project 1
+10:30 - 11:00: Intern
+11:00 - 12:00: Project 2
+12:00 - 13:00: Essen
+13:00 - 13:45: Project 1
+13:45 - 17:00: Project 2
+17:00 - 20:00: Project 3
+Summary:
+	Essen: 01:00
+	Intern: 00:30
+	Project 2: 04:15
+	Project 1: 01:15
+	Project 3: 03:00
+	Total: 09:00
+669  [main] INFO  nu.wasis.stunden.Stunden - ... done.
+669  [main] INFO  nu.wasis.stunden.Stunden - Outputting via `nu.wasis.stunden.plugins.StundenAutoHotkeyScriptForSAPGUIOutputPlugin'...
+StundenAutoHotkeyScriptForSAPGUIOutputPlugin doing it's stuff...
+669  [main] INFO  nu.wasis.stunden.Stunden - ... done.
+```
