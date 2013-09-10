@@ -18,6 +18,14 @@ Input
  - StundenTextfilePlugin: Reads data from human friendly text files
    - see https://github.com/sne11ius/StundenTextfilePlugin
 
+Process
+ - StundenValidatorPlugin: Makes sure all processed date is nice & clean
+   - see https://github.com/sne11ius/StundenValidatorPlugin
+ - StundenRemoveBreaksPlugin: Removes entries based on their project names ("Lunch", "Mittag", "Kelloggs"...)
+   - see https://github.com/sne11ius/StundenRemoveBreaksPlugin
+ - StundenSimplifierPlugin: Merges entries to have each project max once per day
+   - see https://github.com/sne11ius/StundenSimplifierPlugin
+
 Output
  - StundenSTDOutPlugin: Prints nicely formatted data to stdout
    - see https://github.com/sne11ius/StundenSTDOutPlugin
