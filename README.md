@@ -1,7 +1,7 @@
 stunden
 =======
 
-Reads work hours via input plugin(s) and puts them out via output plugin(s).
+Reads work hours via input plugin(s), processes them via process plugin(s) and ... outputs them out via output plugin(s).
 
 TOC
 ===
