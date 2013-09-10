@@ -2,7 +2,7 @@ package nu.wasis.stunden.model;
 
 public class Project {
 
-    private final String name;
+	private final String name;
 
     public Project(final String name) {
         this.name = name;
@@ -11,5 +11,10 @@ public class Project {
     public String getName() {
         return name;
     }
+
+    @Override
+	public String toString() {
+		return "Project [name=" + name + "]";
+	}
 
 }

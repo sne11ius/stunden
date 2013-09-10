@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.joda.time.DateTime;
 
-public class Day {
+public class Day implements Comparable<Day> {
 
     private final DateTime date;
     private final List<Entry> entries;
@@ -16,12 +16,12 @@ public class Day {
         if (null == entries) {
             throw new IllegalArgumentException("Param `entries' must not be null.");
         }
-        this.date = date;
+        this.date = new DateTime(date);
         this.entries = entries;
     }
 
     public DateTime getDate() {
-        return date;
+        return new DateTime(date);
     }
 
     public List<Entry> getEntries() {
@@ -57,5 +57,10 @@ public class Day {
         }
         return true;
     }
+
+	@Override
+	public int compareTo(final Day other) {
+		return getDate().compareTo(other.getDate());
+	}
 
 }

@@ -9,11 +9,14 @@ import java.util.List;
 import nu.wasis.stunden.cli.StundenOptions;
 import nu.wasis.stunden.config.InputPluginBundle;
 import nu.wasis.stunden.config.OutputPluginBundle;
+import nu.wasis.stunden.config.PluginConfig;
+import nu.wasis.stunden.config.ProcessPluginBundle;
 import nu.wasis.stunden.exception.InvalidConfigurationException;
 import nu.wasis.stunden.model.WorkPeriod;
 import nu.wasis.stunden.plugin.InputPlugin;
 import nu.wasis.stunden.plugin.OutputPlugin;
 import nu.wasis.stunden.plugin.PluginLoader;
+import nu.wasis.stunden.plugin.ProcessPlugin;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -57,7 +60,26 @@ public class Stunden {
             LOG.warn("No input plugin generated any data. I'm outta here.");
         }
 
-        System.out.println("");
+        List<ProcessPluginBundle> processPluginBundles = null;
+        try {
+        	processPluginBundles = new PluginLoader().readProcessPlugins(fileContent);
+        } catch (final InvalidConfigurationException e) {
+            LOG.error("Error loading your damn process plugins. Fix your config, I'm outta here.", e);
+            return;
+        }
+        
+        for (final ProcessPluginBundle processPluginBundle : processPluginBundles) {
+			final ProcessPlugin processPlugin = processPluginBundle.getProcessPlugin();
+			final PluginConfig pluginConfig = processPluginBundle.getPluginConfig();
+			LOG.info("Processing via `" + processPlugin.getClass().getName() + "'...");
+			try {
+				combinedWorkPeriod = processPlugin.process(combinedWorkPeriod, pluginConfig.getConfiguration());
+			} catch (final Exception e) {
+				LOG.error("Error processing via " + processPlugin.getClass().getName() + ": ", e);
+				return;
+			}
+			LOG.info("...done.");
+		}
 
         List<OutputPluginBundle> outputPluginBundles = null;
         try {

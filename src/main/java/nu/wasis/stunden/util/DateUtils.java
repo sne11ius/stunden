@@ -13,8 +13,16 @@ public class DateUtils {
     }
 
     public static final DateTimeFormatter DATE_FORMATTER = ISODateTimeFormat.date();
-    public static final DateTimeFormatter TIME_FORMATTER = new DateTimeFormatterBuilder().appendClockhourOfDay(2).appendLiteral(":").appendMinuteOfHour(2)
-                                                                                         .toFormatter();
-    public static final PeriodFormatter PERIOD_FORMATTER = new PeriodFormatterBuilder().minimumPrintedDigits(2).printZeroAlways().appendHours()
-                                                                                       .appendSeparator(":").appendMinutes().toFormatter();
+    public static final DateTimeFormatter TIME_FORMATTER = new DateTimeFormatterBuilder()
+    															.appendClockhourOfDay(2)
+    															.appendLiteral(":")
+    															.appendMinuteOfHour(2)
+    															.toFormatter();
+    public static final PeriodFormatter PERIOD_FORMATTER = new PeriodFormatterBuilder()
+    															.minimumPrintedDigits(2)
+    															.printZeroAlways()
+    															.appendHours()
+    															.appendSeparator(":")
+    															.appendMinutes()
+    															.toFormatter();
 }

@@ -15,9 +15,13 @@ public class WorkPeriod {
 
     private List<Day> days = new LinkedList<>();
 
+    public WorkPeriod(final WorkPeriod workPeriod) {
+    	this(workPeriod.getBegin(), workPeriod.getEnd());
+    }
+    
     public WorkPeriod(final DateTime begin, final DateTime end) {
-        this.begin = begin;
-        this.end = end;
+        this.begin = new DateTime(begin);
+        this.end = new DateTime(end);
     }
 
     public void addAll(final WorkPeriod workPeriod) {
