@@ -6,7 +6,7 @@ import org.joda.time.DateTime;
 
 public class Day implements Comparable<Day> {
 
-    private final DateTime date;
+	private final DateTime date;
     private final List<Entry> entries;
 
     public Day(final DateTime date, final List<Entry> entries) {
@@ -61,6 +61,11 @@ public class Day implements Comparable<Day> {
 	@Override
 	public int compareTo(final Day other) {
 		return getDate().compareTo(other.getDate());
+	}
+
+    @Override
+	public String toString() {
+		return "Day [date=" + date + ", entries=" + entries + "]";
 	}
 
 }
