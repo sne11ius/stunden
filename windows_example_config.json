@@ -19,15 +19,15 @@
                 "breakNames": ["Essen", "Pause", "Mittag"]
             }
         },
-		/* StundenAutoTunePlugin removed, because it is evil.
-		{
+        /* StundenAutoTunePlugin removed, because it is evil.
+        {
             path: "C:/Users/PowPow/Documents/src/StundenAutoTunePlugin/target/StundenAutoTunePlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
             config: {
                 minimumDailyWorkDuration: 8
-			}
+            }
         },
-		*/
-		{
+        */
+        {
             path: "C:/Users/PowPow/Documents/src/StundenSimplifierPlugin/target/StundenSimplifierPlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
             config: {
                 "startTime": "09:00"
@@ -45,17 +45,17 @@
             config: {
                 sapExecutable: "C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe",
                 autoHotkeyExecutable: "C:\\Program Files\\AutoHotkey\\AutoHotkey.exe",
-				outputScriptFilename: "C:/Users/PowPow/Desktop/StundenAutoHotkeyScriptForSAPGUIOutputPluginResulScript.ahk",
+                outputScriptFilename: "C:/Users/PowPow/Desktop/StundenAutoHotkeyScriptForSAPGUIOutputPluginResulScript.ahk",
                 username: "my_username",
                 password: "my_password",
                 autoRun: false,
-				printProjectMapping: true,
+                printProjectMapping: true,
                 projectMapping: {
-					"Project 1": "PSP 1",
-					"Project 2": "PSP 2",
-					"Project 3": "PSP 1",
-					"Project 4": "PSP 3",
-				}
+                    "Project 1": "PSP 1",
+                    "Project 2": "PSP 2",
+                    "Project 3": "PSP 1",
+                    "Project 4": "PSP 3",
+                }
             }
         }
     ]
