@@ -81,7 +81,7 @@ The file must contain valid JSON (though you may omit the quotes around keys and
     ]
 }
 ```
-Also see example @ https://github.com/sne11ius/stunden/blob/master/default.json
+Also see example @ https://github.com/sne11ius/stunden/blob/master/windows_example_config.json
 
 Example run
 ===========

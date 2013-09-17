@@ -1,0 +1,62 @@
+{
+    inputConfigs: [
+        {
+            path: "C:/Users/PowPow/Documents/src/StundenTextfilePlugin/target/StundenTextfilePlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+            config: {
+                readFrom: "C:/Users/PowPow/Documents/work/hours/2013/2013-08",
+                stripProjectNamesOnEqualitySign: true
+            }
+        }
+    ],
+    processConfigs: [
+        {
+            path: "C:/Users/PowPow/Documents/src/StundenValidatorPlugin/target/StundenValidatorPlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+            config: {
+            }
+        }, {
+            path: "C:/Users/PowPow/Documents/src/StundenRemoveBreaksPlugin/target/StundenRemoveBreaksPlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+            config: {
+                "breakNames": ["Essen", "Pause", "Mittag"]
+            }
+        },
+		/* StundenAutoTunePlugin removed, because it is evil.
+		{
+            path: "C:/Users/PowPow/Documents/src/StundenAutoTunePlugin/target/StundenAutoTunePlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+            config: {
+                minimumDailyWorkDuration: 8
+			}
+        },
+		*/
+		{
+            path: "C:/Users/PowPow/Documents/src/StundenSimplifierPlugin/target/StundenSimplifierPlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+            config: {
+                "startTime": "09:00"
+            }
+        }
+    ],
+    outputConfigs: [
+        {
+            path: "C:/Users/PowPow/Documents/src/StundenSTDOutPlugin/target/StundenSTDOutPlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+            config: {
+                noWork: ["Essen"]
+            }
+        }, {
+            path: "C:/Users/PowPow/Documents/src/StundenAutoHotkeyScriptForSAPGUIOutputPlugin/target/StundenAutoHotkeyScriptForSAPGUIOutputPlugin-0.0.1-SNAPSHOT-jar-with-dependencies.jar",
+            config: {
+                sapExecutable: "C:/Program Files (x86)/SAP/FrontEnd/SAPgui/saplogon.exe",
+                autoHotkeyExecutable: "C:\\Program Files\\AutoHotkey\\AutoHotkey.exe",
+				outputScriptFilename: "C:/Users/PowPow/Desktop/StundenAutoHotkeyScriptForSAPGUIOutputPluginResulScript.ahk",
+                username: "my_username",
+                password: "my_password",
+                autoRun: false,
+				printProjectMapping: true,
+                projectMapping: {
+					"Project 1": "PSP 1",
+					"Project 2": "PSP 2",
+					"Project 3": "PSP 1",
+					"Project 4": "PSP 3",
+				}
+            }
+        }
+    ]
+}
