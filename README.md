@@ -21,6 +21,8 @@ Input
 Process
  - StundenValidatorPlugin: Makes sure all processed date is nice & clean
    - see https://github.com/sne11ius/StundenValidatorPlugin
+ - StundenAutoTunePlugin: Makes sure you http://www.youtube.com/watch?v=T_AtWsA2cAM ;)
+   - see https://github.com/sne11ius/StundenAutoTunePlugin
  - StundenRemoveBreaksPlugin: Removes entries based on their project names ("Lunch", "Mittag", "Kelloggs"...)
    - see https://github.com/sne11ius/StundenRemoveBreaksPlugin
  - StundenSimplifierPlugin: Merges entries to have each project max once per day
@@ -42,7 +44,8 @@ How to build
 
  - Follow this to install jspf in your local repo: https://code.google.com/p/jspf/issues/detail?id=26
  - Clone stunden and all plugins you wish to use
- - run `mvn assemly:single` for stunden and all plugins
+ - run `mvn install && mvn assemly:single` for stunden
+ - run `mvn assemly:single` for all plugins
  - create configuration file for stunden
  - run something like
 ```
@@ -52,7 +55,7 @@ java -jar target/stunden-0.0.1-SNAPSHOT-jar-with-dependencies.jar -c /path/to/my
 Configuration
 =============
 Pointing stunden to a configuration file is mandatory.
-The file must contain valid JSON (though you may omit the quotes around keys):
+The file must contain valid JSON (though you may omit the quotes around keys and may use `/*...*/` for comments):
 ```JSON
 {
     "inputConfigs": [
