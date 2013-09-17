@@ -69,6 +69,16 @@ The file must contain valid JSON (though you may omit the quotes around keys and
             ...
         }
     ],
+    "processConfigs": [
+        {
+            "path": "/to/process/plugin.jar",
+            "config": {
+                "allEntriesInConfigObject": "depend on the plugin the path points to"
+            }
+        }, {
+            ...
+        }
+    ],
     "outputConfigs": [
         {
             "path": "/to/output/plugin.jar",
