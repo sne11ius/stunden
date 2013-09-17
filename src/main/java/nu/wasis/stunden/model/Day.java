@@ -3,6 +3,7 @@ package nu.wasis.stunden.model;
 import java.util.List;
 
 import org.joda.time.DateTime;
+import org.joda.time.Duration;
 
 public class Day implements Comparable<Day> {
 
@@ -26,6 +27,14 @@ public class Day implements Comparable<Day> {
 
     public List<Entry> getEntries() {
         return entries;
+    }
+    
+    public Duration getWorkDuration() {
+    	Duration duration = new Duration(0);
+    	for (final Entry entry : entries) {
+			duration = duration.plus(entry.getDuration());
+		}
+    	return duration;
     }
 
     @Override
