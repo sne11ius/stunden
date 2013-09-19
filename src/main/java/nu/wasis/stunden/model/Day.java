@@ -32,7 +32,9 @@ public class Day implements Comparable<Day> {
     public Duration getWorkDuration() {
     	Duration duration = new Duration(0);
     	for (final Entry entry : entries) {
-			duration = duration.plus(entry.getDuration());
+    		if (!entry.isBreak()) {
+    			duration = duration.plus(entry.getDuration());
+    		}
 		}
     	return duration;
     }

@@ -10,15 +10,18 @@ public class Entry implements Comparable<Entry> {
 	private final DateTime begin;
     private DateTime end;
     private final Project project;
+    
+    private boolean isBreak = false;
 
-    public Entry(final DateTime begin, final DateTime end, final Project project) {
+    public Entry(final DateTime begin, final DateTime end, final Project project, final boolean isBreak) {
 		this.begin = new DateTime(begin);
         this.end = new DateTime(end);
         this.project = new Project(project.getName());
+        this.isBreak = isBreak;
     }
     
     public Entry(final Entry oldEntry) {
-    	this(oldEntry.getBegin(), oldEntry.getEnd(), oldEntry.getProject());
+    	this(oldEntry.getBegin(), oldEntry.getEnd(), oldEntry.getProject(), oldEntry.isBreak());
     }
 
     public DateTime getBegin() {
@@ -37,6 +40,14 @@ public class Entry implements Comparable<Entry> {
         return project;
     }
     
+    public boolean isBreak() {
+    	return isBreak;
+    }
+    
+    public void setBreak(final boolean isBreak) {
+    	this.isBreak = isBreak;
+    }
+    
     public Duration getDuration() {
     	return new Duration(begin, end);
     }
@@ -48,6 +59,6 @@ public class Entry implements Comparable<Entry> {
 
 	@Override
 	public String toString() {
-		return "Entry [begin=" + DateUtils.TIME_FORMATTER.print(begin) + ", end=" + DateUtils.TIME_FORMATTER.print(end) + ", project=" + project + "]";
+		return "Entry [begin=" + DateUtils.TIME_FORMATTER.print(begin) + ", end=" + DateUtils.TIME_FORMATTER.print(end) + ", project=" + project + ", isBreak=" + isBreak + "]";
 	}
 }
