@@ -23,8 +23,8 @@ Process
    - see https://github.com/sne11ius/StundenValidatorPlugin
  - StundenAutoTunePlugin: Makes sure you http://www.youtube.com/watch?v=T_AtWsA2cAM ;)
    - see https://github.com/sne11ius/StundenAutoTunePlugin
- - StundenRemoveBreaksPlugin: Removes entries based on their project names ("Lunch", "Mittag", "Kelloggs"...)
-   - see https://github.com/sne11ius/StundenRemoveBreaksPlugin
+ - StundenTagBreaksPlugin: Tags entries based on their project names ("Lunch", "Mittag", "Kelloggs"...)
+   - see https://github.com/sne11ius/StundenTagBreaksPlugin
  - StundenSimplifierPlugin: Merges entries to have each project max once per day
    - see https://github.com/sne11ius/StundenSimplifierPlugin
 
