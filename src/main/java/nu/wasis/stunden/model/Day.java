@@ -1,5 +1,6 @@
 package nu.wasis.stunden.model;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -27,6 +28,24 @@ public class Day implements Comparable<Day> {
 
     public List<Entry> getEntries() {
         return entries;
+    }
+    
+    public boolean isTagged(final String tag) {
+    	for (final Entry entry : entries) {
+			if (entry.isTagged(tag)) {
+				return true;
+			}
+		}
+    	return false;
+    }
+    
+    public boolean isTagged(final Collection<String> tags) {
+    	for (final String tag : tags) {
+			if (isTagged(tag)) {
+				return true;
+			}
+		}
+    	return false;
     }
     
     public Duration getWorkDuration() {

@@ -1,5 +1,8 @@
 package nu.wasis.stunden.model;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 import nu.wasis.stunden.util.DateUtils;
 
 import org.joda.time.DateTime;
@@ -10,6 +13,7 @@ public class Entry implements Comparable<Entry> {
 	private final DateTime begin;
     private DateTime end;
     private final Project project;
+    private final Set<String> tags = new TreeSet<>();
     
     private boolean isBreak = false;
 
@@ -48,8 +52,30 @@ public class Entry implements Comparable<Entry> {
     	this.isBreak = isBreak;
     }
     
+    public Set<String> getTags() {
+    	return tags;
+    }
+    
     public Duration getDuration() {
     	return new Duration(begin, end);
+    }
+
+    public boolean isTagged(final String tag) {
+    	for (final String knownTag : tags) {
+    		if (knownTag.equalsIgnoreCase(tag)) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    public boolean isTagged(Set<String> externTags) {
+    	for (String externTag : externTags) {
+			if (isTagged(externTag)) {
+				return true;
+			}
+		}
+    	return false;
     }
     
 	@Override
@@ -59,6 +85,7 @@ public class Entry implements Comparable<Entry> {
 
 	@Override
 	public String toString() {
-		return "Entry [begin=" + DateUtils.TIME_FORMATTER.print(begin) + ", end=" + DateUtils.TIME_FORMATTER.print(end) + ", project=" + project + ", isBreak=" + isBreak + "]";
+		return "Entry [begin=" + DateUtils.TIME_FORMATTER.print(begin) + ", end=" + DateUtils.TIME_FORMATTER.print(end) + ", project=" + project + ", isBreak=" + isBreak + ", tags=" + tags + "]";
 	}
+
 }
