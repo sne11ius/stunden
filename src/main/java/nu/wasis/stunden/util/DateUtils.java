@@ -13,6 +13,13 @@ public class DateUtils {
     }
 
     public static final DateTimeFormatter DATE_FORMATTER = ISODateTimeFormat.date();
+    public static final DateTimeFormatter DATE_FORMATTER_SHORT = new DateTimeFormatterBuilder()
+    																	.appendDayOfMonth(2)
+    																	.appendLiteral(".")
+    																	.appendMonthOfYear(2)
+    																	.appendLiteral(".")
+    																	.appendYearOfCentury(0, 2)
+    																	.toFormatter();
     public static final DateTimeFormatter TIME_FORMATTER = new DateTimeFormatterBuilder()
     															.appendClockhourOfDay(2)
     															.appendLiteral(":")
