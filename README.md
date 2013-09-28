@@ -23,14 +23,18 @@ Process
    - see https://github.com/sne11ius/StundenValidatorPlugin
  - StundenAutoTunePlugin: Makes sure you http://www.youtube.com/watch?v=T_AtWsA2cAM ;)
    - see https://github.com/sne11ius/StundenAutoTunePlugin
- - StundenTagBreaksPlugin: Tags entries based on their project names ("Lunch", "Mittag", "Kelloggs"...)
+ - StundenTagBreaksPlugin: Tags entries as break based on their project names ("Lunch", "Mittag", "Kelloggs"...)
    - see https://github.com/sne11ius/StundenTagBreaksPlugin
+ - StundenTagEntriesPlugin: Tags entries based on their project names.
+   - see https://github.com/sne11ius/StundenTagEntriesPlugin   
  - StundenSimplifierPlugin: Merges entries to have each project max once per day
    - see https://github.com/sne11ius/StundenSimplifierPlugin
 
 Output
  - StundenSTDOutPlugin: Prints nicely formatted data to stdout
    - see https://github.com/sne11ius/StundenSTDOutPlugin
+ - StundenExcelWriterPlugin: Fills out a template Excel file.
+   - see https://github.com/sne11ius/StundenExcelWriterPlugin
 
 Planned Plugins
 ===============
