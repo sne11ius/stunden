@@ -5,19 +5,19 @@ import nu.wasis.stunden.plugin.ProcessPlugin;
 public class ProcessPluginBundle {
 
 	private final ProcessPlugin plugin;
-    private final PluginConfig pluginConfig;
+    private final Object pluginConfiguration;
 
-    public ProcessPluginBundle(final ProcessPlugin plugin, final PluginConfig pluginConfig) {
+    public ProcessPluginBundle(final ProcessPlugin plugin, final Object pluginConfiguration) {
         this.plugin = plugin;
-        this.pluginConfig = pluginConfig;
+        this.pluginConfiguration = pluginConfiguration;
     }
 
     public ProcessPlugin getProcessPlugin() {
         return plugin;
     }
 
-    public PluginConfig getPluginConfig() {
-        return pluginConfig;
+    public Object getPluginConfiguration() {
+        return pluginConfiguration;
     }
 
 }

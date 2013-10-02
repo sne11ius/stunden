@@ -10,7 +10,6 @@ import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
 import nu.wasis.stunden.config.InputPluginBundle;
 import nu.wasis.stunden.config.OutputPluginBundle;
-import nu.wasis.stunden.config.PluginConfig;
 import nu.wasis.stunden.config.ProcessPluginBundle;
 import nu.wasis.stunden.exception.InvalidConfigurationException;
 import nu.wasis.stunden.util.JsonUtils;
@@ -30,8 +29,7 @@ public class PluginLoader {
             final String path = inputConfig.get("path").getAsString();
             final InputPlugin inputPlugin = loadInputPlugin(path);
             final Object pluginConfig = readPluginConfiguration(inputConfig, inputPlugin);
-            final PluginConfig stundenPluginConfig = new PluginConfig(path, pluginConfig);
-            inputPluginBundles.add(new InputPluginBundle(inputPlugin, stundenPluginConfig));
+            inputPluginBundles.add(new InputPluginBundle(inputPlugin, pluginConfig));
         }
 
         return inputPluginBundles;
@@ -44,9 +42,8 @@ public class PluginLoader {
             final JsonObject processConfig = element.getAsJsonObject();
             final String path = processConfig.get("path").getAsString();
             final ProcessPlugin processPlugin = loadProcessPlugin(path);
-            final Object pluginConfig = readPluginConfiguration(processConfig, processPlugin);
-            final PluginConfig stundenPluginConfig = new PluginConfig(path, pluginConfig);
-            outputPluginBundles.add(new ProcessPluginBundle(processPlugin, stundenPluginConfig));
+            final Object pluginConfiguration = readPluginConfiguration(processConfig, processPlugin);
+            outputPluginBundles.add(new ProcessPluginBundle(processPlugin, pluginConfiguration));
         }
         return outputPluginBundles;
     }
@@ -57,9 +54,8 @@ public class PluginLoader {
             final JsonObject outputConfig = element.getAsJsonObject();
             final String path = outputConfig.get("path").getAsString();
             final OutputPlugin outputPlugin = loadOutputPlugin(path);
-            final Object pluginConfig = readPluginConfiguration(outputConfig, outputPlugin);
-            final PluginConfig stundenPluginConfig = new PluginConfig(path, pluginConfig);
-            outputPluginBundles.add(new OutputPluginBundle(outputPlugin, stundenPluginConfig));
+            final Object pluginConfiguration = readPluginConfiguration(outputConfig, outputPlugin);
+            outputPluginBundles.add(new OutputPluginBundle(outputPlugin, pluginConfiguration));
         }
         return outputPluginBundles;
     }

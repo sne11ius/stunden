@@ -5,19 +5,19 @@ import nu.wasis.stunden.plugin.InputPlugin;
 public class InputPluginBundle {
 
     private final InputPlugin plugin;
-    private final PluginConfig pluginConfig;
+    private final Object pluginConfiguration;
 
-    public InputPluginBundle(final InputPlugin plugin, final PluginConfig pluginConfig) {
+    public InputPluginBundle(final InputPlugin plugin, final Object pluginConfiguration) {
         this.plugin = plugin;
-        this.pluginConfig = pluginConfig;
+        this.pluginConfiguration = pluginConfiguration;
     }
 
     public InputPlugin getInputPlugin() {
         return plugin;
     }
 
-    public PluginConfig getPluginConfig() {
-        return pluginConfig;
+    public Object getPluginConfiguration() {
+        return pluginConfiguration;
     }
 
 }

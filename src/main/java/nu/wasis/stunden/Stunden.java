@@ -9,7 +9,6 @@ import java.util.List;
 import nu.wasis.stunden.cli.StundenOptions;
 import nu.wasis.stunden.config.InputPluginBundle;
 import nu.wasis.stunden.config.OutputPluginBundle;
-import nu.wasis.stunden.config.PluginConfig;
 import nu.wasis.stunden.config.ProcessPluginBundle;
 import nu.wasis.stunden.exception.InvalidConfigurationException;
 import nu.wasis.stunden.model.WorkPeriod;
@@ -132,10 +131,10 @@ public class Stunden {
         // Run process plugins
         for (final ProcessPluginBundle processPluginBundle : processPluginBundles) {
 			final ProcessPlugin processPlugin = processPluginBundle.getProcessPlugin();
-			final PluginConfig pluginConfig = processPluginBundle.getPluginConfig();
+			final Object pluginConfiguration = processPluginBundle.getPluginConfiguration();
 			LOG.info("Processing via `" + processPlugin.getClass().getName() + "'...");
 			try {
-				combinedWorkPeriod = processPlugin.process(combinedWorkPeriod, pluginConfig.getConfiguration());
+				combinedWorkPeriod = processPlugin.process(combinedWorkPeriod, pluginConfiguration);
 			} catch (final Exception e) {
 				LOG.error("Error processing via " + processPlugin.getClass().getName() + ": ", e);
 				return null;
@@ -167,7 +166,7 @@ public class Stunden {
         for (final OutputPluginBundle outputPluginBundle : outputPluginBundles) {
             final OutputPlugin outputPlugin = outputPluginBundle.getOutputPlugin();
             try {
-                final Object pluginConfig = outputPluginBundle.getPluginConfig().getConfiguration();
+                final Object pluginConfig = outputPluginBundle.getPluginConfiguration();
                 LOG.info("Outputting via `" + outputPlugin.getClass().getName() + "'...");
                 outputPlugin.output(combinedWorkPeriod, pluginConfig);
                 LOG.info("... done.");
@@ -190,7 +189,7 @@ public class Stunden {
         WorkPeriod combinedWorkPeriod = null;
         for (final InputPluginBundle inputPluginBundle : inputPluginBundles) {
             final InputPlugin inputPlugin = inputPluginBundle.getInputPlugin();
-            final Object pluginConfig = inputPluginBundle.getPluginConfig().getConfiguration();
+            final Object pluginConfig = inputPluginBundle.getPluginConfiguration();
             LOG.info("Reading via `" + inputPlugin.getClass().getName() + "'...");
             final WorkPeriod workPeriod = inputPlugin.read(pluginConfig);
             if (null == combinedWorkPeriod) {
