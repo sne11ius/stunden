@@ -9,9 +9,10 @@ import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
 /**
- * A single occurence of work. Like in `10:30 - 11:00: Meeting XY'.
- * 
+ * A single occurence of work, like in `10:30 - 11:00: Meeting XY'.
+ * <p>
  * Entries can be explicitly marked as break or tagged with arbitrary tags.
+ * </p>
  */
 public class Entry implements Comparable<Entry> {
 
@@ -23,7 +24,8 @@ public class Entry implements Comparable<Entry> {
     private boolean isBreak = false;
 
     /**
-     * Create a new {@link Entry} object.
+     * Create a new {@link Entry} object. Note that copies will be created and
+     * used for all params.
      * 
      * @param begin The begin of this {@link Entry}. Since {@link Entry}s are
      *        supposed to be used as parts of a {@link Day} object, the date
@@ -33,8 +35,8 @@ public class Entry implements Comparable<Entry> {
      *        supposed to be used as parts of a {@link Day} object, the date
      *        (year, month, day) is supposed to be ignored, leaving only the
      *        time (hour, minute, ...).
-     * @param project
-     * @param isBreak
+     * @param project The Project this entry belongs to.
+     * @param isBreak Whether this {@link Entry} is regarded as break or work.
      */
     public Entry(final DateTime begin, final DateTime end, final Project project, final boolean isBreak) {
 		this.begin = new DateTime(begin);
@@ -43,6 +45,10 @@ public class Entry implements Comparable<Entry> {
         this.isBreak = isBreak;
     }
     
+    /**
+     * Create a new {@link Entry}, copying the values of the fiven entry. 
+     * @param oldEntry The {@link Entry} to copy.
+     */
     public Entry(final Entry oldEntry) {
     	this(oldEntry.getBegin(), oldEntry.getEnd(), oldEntry.getProject(), oldEntry.isBreak());
     }
@@ -79,6 +85,13 @@ public class Entry implements Comparable<Entry> {
     	return new Duration(begin, end);
     }
 
+    /**
+     * Check if this {@link Entry} is tagged with the given tag. This check
+     * ignores case.
+     * @param tag The tag to check.
+     * @return <code>true</code> if this {@link Entry} is tagged with the given
+     *         tag. Else <code>false</code>.
+     */
     public boolean isTagged(final String tag) {
     	for (final String knownTag : tags) {
     		if (knownTag.equalsIgnoreCase(tag)) {
@@ -88,6 +101,13 @@ public class Entry implements Comparable<Entry> {
     	return false;
     }
     
+    /**
+     * Check if this {@link Entry} is tagged with any of the given tags. This
+     * check ignores case.
+     * @param externTags The tags to check.
+     * @return <code>true</code> if this {@link Entry} is tagged with any of the
+     *         given tags. Else <code>false</code>.
+     */
     public boolean isTagged(Set<String> externTags) {
     	for (String externTag : externTags) {
 			if (isTagged(externTag)) {

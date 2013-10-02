@@ -1,7 +1,6 @@
 package nu.wasis.stunden.plugin;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,9 +19,23 @@ import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+/**
+ * This class can be used load Plugins for stunden.
+ */
 public class PluginLoader {
 
-    public List<InputPluginBundle> readInputPlugins(final String jsonConfig) throws IOException {
+	/**
+	 * Load all {@link InputPlugin}s declared in the given configuration. Also
+	 * read the configuration for the plugins. Then bundle each loaded
+	 * {@link InputPlugin} with its configuration object to create the
+	 * {@link List} of {@link InputPluginBundle}s.
+	 * 
+	 * @param jsonConfig A JSON-{@link String}, containing a list of configured
+	 *        {@link InputPlugin}s.
+	 * @return A {@link List} of {@link InputPluginBundle}s, each containing the
+	 *         {@link InputPlugin} bundled with the corresponding configuration.
+	 */
+    public List<InputPluginBundle> readInputPlugins(final String jsonConfig) {
         final List<InputPluginBundle> inputPluginBundles = new LinkedList<>();
         for (final JsonElement element : getInputConfigsElement(jsonConfig)) {
             final JsonObject inputConfig = element.getAsJsonObject();
@@ -35,7 +48,17 @@ public class PluginLoader {
         return inputPluginBundles;
     }
     
-
+    /**
+     * Load all {@link ProcessPlugin}s declared in the given configuration. Also
+	 * read the configuration for the plugins. Then bundle each loaded
+	 * {@link ProcessPlugin} with its configuration object to create the
+	 * {@link List} of {@link ProcessPluginBundle}s. 
+     * @param jsonConfig A JSON-{@link String}, containing a list of configured
+	 *        {@link ProcessPlugin}s.
+	 * @return A {@link List} of {@link ProcessPluginBundle}s, each containing
+	 *         the {@link ProcessPlugin} bundled with the corresponding
+	 *         configuration.
+     */
     public List<ProcessPluginBundle> readProcessPlugins(final String jsonConfig) {
         final List<ProcessPluginBundle> outputPluginBundles = new LinkedList<>();
         for (final JsonElement element : getProcessConfigsElement(jsonConfig)) {
@@ -48,6 +71,17 @@ public class PluginLoader {
         return outputPluginBundles;
     }
 
+    /**
+     * Load all {@link OutputPlugin}s declared in the given configuration. Also
+     * read the configuration for the plugins. Then bundle each loaded
+     * {@link OutputPlugin} with its configuration object to create the
+     * {@link List} of {@link OutputPluginBundle}s. 
+     * @param jsonConfig A JSON-{@link String}, containing a list of configured
+     *        {@link OutputPlugin}s.
+     * @return A {@link List} of {@link OutputPluginBundle}s, each containing
+     *         the {@link OutputPlugin} bundled with the corresponding
+     *         configuration.
+     */
 	public List<OutputPluginBundle> readOutputPlugins(final String jsonConfig) {
         final List<OutputPluginBundle> outputPluginBundles = new LinkedList<>();
         for (final JsonElement element : getOutputConfigsElement(jsonConfig)) {
