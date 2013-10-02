@@ -1,5 +1,8 @@
 package nu.wasis.stunden.exception;
 
+/**
+ * Thrown by plugins if they are provided with an invalid configuration. 
+ */
 public class InvalidConfigurationException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;

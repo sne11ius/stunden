@@ -1,5 +1,10 @@
 package nu.wasis.stunden.exception;
 
+import nu.wasis.stunden.model.WorkPeriod;
+
+/**
+ * Thrown if two {@link WorkPeriod}s to be combined contain duplicate entries.
+ */
 public class NonUniqueDayException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;

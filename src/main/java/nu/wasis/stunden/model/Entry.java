@@ -8,6 +8,11 @@ import nu.wasis.stunden.util.DateUtils;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
+/**
+ * A single occurence of work. Like in `10:30 - 11:00: Meeting XY'.
+ * 
+ * Entries can be explicitly marked as break or tagged with arbitrary tags.
+ */
 public class Entry implements Comparable<Entry> {
 
 	private final DateTime begin;
@@ -17,6 +22,20 @@ public class Entry implements Comparable<Entry> {
     
     private boolean isBreak = false;
 
+    /**
+     * Create a new {@link Entry} object.
+     * 
+     * @param begin The begin of this {@link Entry}. Since {@link Entry}s are
+     *        supposed to be used as parts of a {@link Day} object, the date
+     *        (year, month, day) is supposed to be ignored, leaving only the
+     *        time (hour, minute, ...).
+     * @param end The end of this {@link Entry}. Since {@link Entry}s are
+     *        supposed to be used as parts of a {@link Day} object, the date
+     *        (year, month, day) is supposed to be ignored, leaving only the
+     *        time (hour, minute, ...).
+     * @param project
+     * @param isBreak
+     */
     public Entry(final DateTime begin, final DateTime end, final Project project, final boolean isBreak) {
 		this.begin = new DateTime(begin);
         this.end = new DateTime(end);

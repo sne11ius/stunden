@@ -11,9 +11,6 @@ import org.joda.time.DateTime;
 public class WorkPeriod {
 
     private SortedSet<Day> days = new TreeSet<>();
-    
-    public WorkPeriod() {
-    }
 
     public void addAll(final WorkPeriod workPeriod) {
         for (final Day day : workPeriod.getDays()) {

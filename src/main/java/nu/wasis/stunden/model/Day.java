@@ -6,11 +6,22 @@ import java.util.List;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
+/**
+ * A day full of work.
+ */
 public class Day implements Comparable<Day> {
 
 	private final DateTime date;
     private final List<Entry> entries;
 
+    /**
+     * Create a new {@link Day} object.
+     * @param date The date of this day. The exact time (hours, minutes etc.) of
+     *        the used {@link DateTime} object are supposed to be ignored. Must
+     *        not be <code>null</code>.
+     * @param entries A {@link List} of {@link Entry} objects that occured on
+     *        this day. Must not be <code>null</code>.
+     */
     public Day(final DateTime date, final List<Entry> entries) {
         if (null == date) {
             throw new IllegalArgumentException("Param `date' must not be null.");
@@ -30,6 +41,12 @@ public class Day implements Comparable<Day> {
         return entries;
     }
     
+    /**
+     * Check if the {@link Day} is tagged with a tag.
+     * @param tag The tag to check.
+     * @return <code>true</code> if any of the {@link Entry}s of this day is
+     *         tagged with the provided tag. Else <code>false</code>.
+     */
     public boolean isTagged(final String tag) {
     	for (final Entry entry : entries) {
 			if (entry.isTagged(tag)) {
@@ -39,6 +56,12 @@ public class Day implements Comparable<Day> {
     	return false;
     }
     
+    /**
+     * Check if the {@link Day} is tagged with any of the provided tags.
+     * @param tags A collection of tags to be checked.
+     * @return <code>true</code> if any of the {@link Entry}s of this day is
+     *         tagged with any of the provided tags. Else <code>false</code>.
+     */
     public boolean isTagged(final Collection<String> tags) {
     	for (final String tag : tags) {
 			if (isTagged(tag)) {
@@ -48,6 +71,13 @@ public class Day implements Comparable<Day> {
     	return false;
     }
     
+    /**
+     * Get the total (billable) work duration for this {@link Day}.
+     * 
+     * @return The sum of the (billable) work durations of all {@link Entry}s of
+     *         this day. {@link Entry}s are skipped if their
+     *         <code>isBreak</code> method returns <code>true</code>.
+     */
     public Duration getWorkDuration() {
     	Duration duration = new Duration(0);
     	for (final Entry entry : entries) {
